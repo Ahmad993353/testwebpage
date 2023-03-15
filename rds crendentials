@@ -2,3 +2,64 @@ hostname:
 mysql.cme5zhlvh69v.us-east-1.rds.amazonaws.com
 Port:
 3306
+
+{
+  "driving-history": [
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "11:23:30"
+    },
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "14:36:56"
+    },
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "14:59:14"
+    },
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "15:13:34"
+    },
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "15:14:17"
+    },
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "15:38:22"
+    },
+    {
+      "behavior": "aggressive",
+      "device_id": "avc123",
+      "latitude": "-35.28000000",
+      "longitude": "149.12000000",
+      "score": "70",
+      "time": "15:41:27"
+    }
+  ]
+}
