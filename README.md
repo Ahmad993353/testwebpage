@@ -9,8 +9,7 @@
 Start by typing the following commands in your terminal
 
 ```
-> git clone https://github.com/Ahmad993353/testwebpage/tree/main/testwebpage webpage
-> cd webpage
+> git clone https://github.com/Ahmad993353/testwebpage
 > npm init
 > npm install express
 > node server.js
