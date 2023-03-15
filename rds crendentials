@@ -3,7 +3,6 @@ mysql.cme5zhlvh69v.us-east-1.rds.amazonaws.com
 Port:
 3306
 
-sudo /snap/mysql-workbench-community/10/usr/bin/mysql-workbench
 
 {
   "driving-history": [
