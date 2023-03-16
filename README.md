@@ -4,6 +4,7 @@
   - Node.js
   - NPM
   - Git
+  -nodemon
 
 #### Installing & Local Development
 Start by typing the following commands in your terminal
@@ -11,6 +12,7 @@ Start by typing the following commands in your terminal
 ```
 > git clone https://github.com/Ahmad993353/testwebpage
 > npm init
+> screen
 > nodemon
 
 ```
