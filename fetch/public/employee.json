@@ -1,0 +1,42 @@
+[
+    {
+		"Name": "Tiger Nixon",
+		"Position": "System Architect",
+		"Office": "Edinburgh",
+		"Age": "61",
+		"Start date": "20/04/2022",
+		"Salary": "$320,800"
+    },
+    {
+		"Name": "Anne",
+		"Position": "Computer Architect",
+		"Office": "Mexico",
+		"Age": "31",
+		"Sdate": "07/03/2023",
+		"Salary": "$20,800"
+    },
+    {
+		"Name": "Ben",
+		"Position": "Engineer",
+		"Office": "Belgium",
+		"Age": "21",
+		"Sdate": "07/03/2023",
+		"Salary": "$200,800"
+    },
+    {
+		"Name": "Casper",
+		"Position": "Social Engineer",
+		"Office": "Australia",
+		"Age": "24",
+		"Sdate": "08/03/2023",
+		"Salary": "$250,800"
+    },
+    {
+		"Name": "Dave",
+		"Position": "Hardware Engineer",
+		"Office": "Germany",
+		"Age": "41",
+		"Sdate": "27/03/2023",
+		"Salary": "$350,800"
+    }
+]
