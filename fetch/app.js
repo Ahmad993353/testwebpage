@@ -6,13 +6,15 @@ var bodyParser = require('body-parser')
 var flash = require('express-flash')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
-var mysql = require('mysql')
-var connection = require('./database')
 var nodeRoutes = require('./routes/index')
 var userRoute = require('./routes/users')
+var chartRoute = require('./routes/charts')
+
 var app = express()
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
@@ -30,12 +32,16 @@ app.use(flash())
 
 app.use('/', nodeRoutes)
 app.use('/users', userRoute)
+app.use('/charts', chartRoute)
+
 app.use(function (req, res, next) {
   next(createError(404))
 })
-app.listen(5555, function () {
+
+app.listen(80, function () {
   console.log('Node server running...')
 })
+
 // error
 app.use(function (err, req, res, next) {
   res.locals.message = err.message
@@ -43,4 +49,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500)
   res.render('error')
 })
+
 module.exports = app
