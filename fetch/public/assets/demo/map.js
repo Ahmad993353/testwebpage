@@ -10,9 +10,16 @@ const osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 const markers = [];
 
 // Function to add a marker to the map and the markers array
-function addMarker(latitude, longitude) {
-  map.setView([latitude, longitude], 15);
+function addMarker(latitude, longitude, time, deviceId, behavior, score) {
+  map.setView([latitude, longitude], 12);
   const marker = L.marker([latitude, longitude]).addTo(map);
+  const popupContent = `
+    <p><strong>Time:</strong> ${time}</p>
+    <p><strong>Device ID:</strong> ${deviceId}</p>
+    <p><strong>Behavior:</strong> ${behavior}</p>
+    <p><strong>Score:</strong> ${score}</p>
+  `;
+  marker.bindPopup(popupContent);
   markers.push(marker);
 }
 
@@ -32,10 +39,14 @@ function fetchDataAndUpdateMarkers() {
       clearMarkers();
       // Loop through each driving history item and add a marker for it
       data['driving-history'].forEach(item => {
-        const lat = item.latitude;
-        const lng = item.longitude;
-        addMarker(lat, lng);
-      });
+  	const lat = item.latitude;
+  	const lng = item.longitude;
+  	const time = item.time;
+  	const deviceId = item.device_id;
+  	const behavior = item.behavior;
+  	const score = item.score;
+  	addMarker(lat, lng, time, deviceId, behavior, score);
+});
     });
 }
 
