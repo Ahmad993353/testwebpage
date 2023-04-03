@@ -2,6 +2,8 @@ window.addEventListener('DOMContentLoaded', event => {
     // Simple-DataTables
     // https://github.com/fiduswriter/Simple-DataTables/wiki
 
+    let dataTable;
+
     function loadData() {
         fetch('/data')
             .then(response => response.json())
@@ -18,8 +20,13 @@ window.addEventListener('DOMContentLoaded', event => {
                 const myData = data['driving-history'];
                 const mappedData = myData.map(event => [event.time, event.device_id, event.behavior, event.latitude, event.longitude, event.score]);
 
+                // Destroy the existing table
+                if (dataTable) {
+                    dataTable.destroy();
+                }
+
                 // Set up the table using Simple-DataTables
-                const dataTable = new window.simpleDatatables.DataTable(".table", {
+                dataTable = new window.simpleDatatables.DataTable(".table", {
                     data: {
                         data: mappedData
                     }
@@ -27,10 +34,9 @@ window.addEventListener('DOMContentLoaded', event => {
             });
     }
 
+    // Load the data on page load
     loadData();
 
-    const refreshButton = document.getElementById('refresh-button');
-    refreshButton.addEventListener('click', event => {
-        loadData();
-    });
+    // Refresh the table every 30 seconds
+    setInterval(loadData, 30000);
 });

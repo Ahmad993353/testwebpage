@@ -5,25 +5,37 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 // Area Chart Example
 var ctx = document.getElementById("myLineChart");
 
-// Define a function to fetch the data and update the chart
-function fetchDataAndUpdateChart() {
+// Define variables for the behavior and score cards
+const behaviorCard = document.getElementById('behavior-card');
+const scoreCard = document.getElementById('score-card');
+
+// Define a function to fetch the latest data and update the chart and cards
+function fetchLatestDataAndUpdateChartAndCards() {
   fetch('/data')
     .then(response => response.json())
     .then(data => {
+      // Update the behavior and score cards with the latest data
+      const latestItem = data["driving-history"][data["driving-history"].length - 1];
+      const latestBehavior = latestItem.behavior;
+      const latestScore = latestItem.score;
+      behaviorCard.textContent = `Behavior: ${latestBehavior}`;
+      scoreCard.textContent = `Score: ${latestScore}`;
+
+      // Update the chart with the new data
       const behaviours = [];
-      const score = [];
-      const time = [];
+      const scores = [];
+      const times = [];
 
       data["driving-history"].forEach(item => {
         behaviours.push(item.behavior);
-        score.push(item.score);
-        time.push(item.time);
+        scores.push(item.score);
+        times.push(item.time);
       });
 
-      var myLineChart = new Chart(ctx, {
+      const myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: time,
+          labels: times,
           datasets: [{
             label: "Score",
             lineTension: 0.3,
@@ -36,7 +48,7 @@ function fetchDataAndUpdateChart() {
             pointHoverBackgroundColor: "rgba(2,117,216,1)",
             pointHitRadius: 50,
             pointBorderWidth: 2,
-            data: score,
+            data: scores,
           }],
         },
         options: {
@@ -71,8 +83,8 @@ function fetchDataAndUpdateChart() {
     });
 }
 
-// Call the function to fetch and update the chart initially
-fetchDataAndUpdateChart();
+// Call the function to fetch the latest data and update the chart and cards initially
+fetchLatestDataAndUpdateChartAndCards();
 
 // Set up the auto-refresh feature
-setInterval(fetchDataAndUpdateChart, 15000); // Refresh every 15 seconds
+setInterval(fetchLatestDataAndUpdateChartAndCards, 30000); // Refresh every 30 seconds
