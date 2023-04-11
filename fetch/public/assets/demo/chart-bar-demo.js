@@ -47,7 +47,7 @@ function fetchAndRefreshChart() {
             yAxes: [{
               ticks: {
                 min: 0,
-                max: 100,
+                max: 1,
                 maxTicksLimit: 5
               },
               gridLines: {

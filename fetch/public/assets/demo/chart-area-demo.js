@@ -67,7 +67,7 @@ function fetchLatestDataAndUpdateChartAndCards() {
             yAxes: [{
               ticks: {
                 min: 0,
-                max: 100,
+                max: 1,
                 maxTicksLimit: 7
               },
               gridLines: {
