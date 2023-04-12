@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 const table = document.querySelector('.table');
 
                 // Map the data in the desired order
-                const myData = data['driving-history'];
+                const myData = data['driving-history'].reverse();
                 const mappedData = myData.map(event => [event.time, event.device_id, event.behavior, event.latitude, event.longitude, event.score]);
 
                 // Destroy the existing table
