@@ -5,7 +5,7 @@ var router = express.Router()
 let config = {
   method: 'get',
   maxBodyLength: Infinity,
-  url: 'https://l9ve31psbl.execute-api.ap-southeast-1.amazonaws.com/apidev/restfunction?device_id=avc129',
+  url: 'https://l9ve31psbl.execute-api.ap-southeast-1.amazonaws.com/apidev/restfunction?date=2023-04-11',
   headers: { 
     'x-api-key': 'v8QwL4wpSS1m5QfdRqjwZW3y32sXS24RsBWx0Ya0'
   }
