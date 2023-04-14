@@ -11,7 +11,11 @@ const markers = [];
 
 // Function to add a marker to the map and the markers array
 function addMarker(latitude, longitude, time, deviceId, behavior, score) {
-  map.setView([latitude, longitude], 12);
+  // Check if latitude and longitude are valid numbers
+  if (isNaN(latitude) || isNaN(longitude)) {
+    return; // Skip adding marker if invalid values are encountered
+  }
+  //map.setView([latitude, longitude], 12);
   const marker = L.marker([latitude, longitude]).addTo(map);
   const popupContent = `
     <p><strong>Time:</strong> ${time}</p>
@@ -37,6 +41,8 @@ function fetchDataAndUpdateMarkers() {
     .then(data => {
       // Call clearMarkers() to remove all existing markers
       clearMarkers();
+	  // Create an array to hold the LatLng objects for each marker
+      const latLngs = [];
       // Loop through each driving history item and add a marker for it
       data['driving-history'].forEach(item => {
   	const lat = item.latitude;
@@ -46,7 +52,14 @@ function fetchDataAndUpdateMarkers() {
   	const behavior = item.behavior;
   	const score = item.score;
   	addMarker(lat, lng, time, deviceId, behavior, score);
+	 // Create a LatLng object for the current marker and add it to the array
+        const latLng = L.latLng(lat, lng);
+        latLngs.push(latLng);
 });
+	// Create a LatLngBounds object from the array of LatLng objects
+      const bounds = L.latLngBounds(latLngs);
+	// Set the map view to the bounds of all the markers
+      map.fitBounds(bounds);
     });
 }
 
@@ -54,7 +67,7 @@ function fetchDataAndUpdateMarkers() {
 fetchDataAndUpdateMarkers();
 
 // Set interval to repeatedly call fetchDataAndUpdateMarkers() every 30 seconds
-const refreshInterval = setInterval(fetchDataAndUpdateMarkers, 15000);
+const refreshInterval = setInterval(fetchDataAndUpdateMarkers, 30000);
 
 // Function to stop auto-refresh
 function stopRefresh() {
